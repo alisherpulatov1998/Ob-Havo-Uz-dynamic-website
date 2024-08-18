@@ -1,23 +1,16 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import 'dotenv/config';
 import morgan from "morgan";
 
-const port = 3000;
+const port = process.env.PORT;
 const app = express();
-const gApiKey = "AIzaSyCxbEnDKOImEG9FWnYmFH8K3e2dTbvp9UQ";
-const wApiKey = "51c22f925d68dbbb5c52cbb0ad36cbdd";
-// const googleApi = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${gApiKey}`;
-// const weatherApi = `https://api.openweathermap.org/data/3.0/onecall?lat=40.5952091&lon=72.1495341&exclude=daily&units=metric&appid=${wApiKey}`;
-
-
+const gApiKey = process.env.G_API_KEY;
+const wApiKey = process.env.W_API_KEY;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
-
-
-
 
 
 
@@ -26,9 +19,11 @@ app.get("/about", (req, res) => {
   });
 
   
+
 app.get("/contact", (req, res) => {
     res.render("contact.ejs");
 });
+
 
 
 app.get("/", async (req, res) => {
@@ -97,7 +92,7 @@ app.get("/", async (req, res) => {
         } else if (weatherNowId >= 300 && weatherNowId < 400){
             weatherNowId = "Yomg'irli";
         } else if (weatherNowId >= 500 && weatherNowId < 600){
-            weatherNowId = "Yomg'ir Qorga aylanishi Kutiladi";
+            weatherNowId = "Yomg'ir yog'ishi kutiladi";
         } else if (weatherNowId >= 600 && weatherNowId < 700){
             weatherNowId = "Qorli";
         } else if (weatherNowId >= 700 && weatherNowId < 800){
@@ -214,7 +209,7 @@ app.post("/searchPlace", async (req, res) => {
         } else if (weatherNowId >= 300 && weatherNowId < 400){
             weatherNowId = "Yomg'irli";
         } else if (weatherNowId >= 500 && weatherNowId < 600){
-            weatherNowId = "Yomg'ir Kutiladi";
+            weatherNowId = "Yomg'ir yog'ishi kutiladi";
         } else if (weatherNowId >= 600 && weatherNowId < 700){
             weatherNowId = "Qorli";
         } else if (weatherNowId >= 700 && weatherNowId < 800){
