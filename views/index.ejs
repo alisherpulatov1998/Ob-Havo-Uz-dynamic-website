@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ob-Havo Uz</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+</head>
+
+<body>
+
+    <div class="mainContainer">
+
+
+        <div class="navSection telSizeNavbar">
+
+            <nav class="navbar">
+    
+                <ul>
+
+                    <li class="contactUs navMen"><a href="/contact">Bog'lanish</a></li>
+                    <li class="logo"><a href="/"><img src="/images/Ob-havo uz.png" alt="Ob-Havo UZ sayt logosi"></a></li>
+                    <li class="about navMen"><a href="/about">Haqimizda</a></li>
+
+                </ul>
+    
+            </nav>
+    
+        </div>
+        
+        <div class="container telSizeContainer">
+    
+            <div class="leftBox innerBox">
+
+                
+    
+                <form action="/searchPlace" id="form" class="mainForm" method="POST">
+    
+                    <label for="addressInput">Shahar nomini kiriting!</label>
+                    <i><img class="search-icon" src="/images/search-icon.png" alt="qidirish lupa rasmi"></i>
+                    <input type="search" id="addressInput"  name="address">
+                    <button type="submit" class="form-submit">Izlash</button>
+                
+                </form>
+                
+                <% if (locals.content && locals.city && locals.timezone && locals.currentDate && locals.currentTime && locals.sunrise && locals.sunset && locals.tempNow && locals.feelsLike && locals.pressure && locals.humidity && locals.clouds && locals.visibility && locals.windSpeed && locals.windDirection && locals.weatherNowId && locals.weatherNowMain && locals.weatherNowDescription && locals.weatherNowIcon) { %>
+                
+                <div class="weatherInfo">
+    
+                    <img src="https://openweathermap.org/img/wn/<%= weatherNowIcon %>@2x.png" alt="rasm" width="100px" height="100px">
+                    <h2><%=tempNow%></h2>
+                    <p> <%= weatherNowId %> </p>
+    
+                </div>
+                
+                <div class="circleAnimationBox">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+    
+                <div class="dateInfo">
+    
+                    <h4>Bugungi Sana:</h4>
+                    <p><%= currentDate %></p>
+                    <p><%= currentTime %></p>
+    
+                </div>
+                
+                <h1> <%= city %> </h1>
+    
+            </div>
+    
+            <div class="rightBox innerBox">
+    
+                <h3>Bugungi Ob-Havo</h3>
+    
+                <ul class="rightUl telSizeUl">
+                    
+                    <li class="sunrise">
+                        <h4>Quyosh Chiqishi</h4>
+                        <p><%= sunrise %></p>
+                    </li>
+    
+                    <li class="sunset">
+                        <h4>Quyosh Botishi</h4>
+                        <p><%= sunset %></p>
+                    </li>
+    
+                    <li class="tempFeelsLike">
+                        <h4>Harorat Tuyiladi</h4>
+                        <p><%= feelsLike %></p>
+                    </li>
+    
+                    <li class="pressure">
+                        <h4>Bosim</h4>
+                        <p><%= pressure %></p>
+                    </li>
+    
+                    <li class="humidity">
+                        <h4>Namlik</h4>
+                        <p><%= humidity %></p>
+                    </li>
+    
+                    <li class="clouds">
+                        <h4>Bulutlilik darajasi</h4>
+                        <p><%= clouds %></p>
+                    </li>
+    
+                    <li class="visibility">
+                        <h4>Ko'ra Olish Masofasi</h4>
+                        <p><%= visibility %></p>
+                    </li>
+    
+                    <li class="wind">
+                        <h4>Shamol</h4>
+                        <p><%= windSpeed %></p>
+                    </li>
+    
+                    <li class="windDirection">
+                        <h4>Shamol Yo'nalishi</h4>
+                        <p><%= windDirection %></p>
+                    </li>
+    
+                </ul>
+    
+                <p class="apiInfo">Barcha Ma'lumotlar <a href="https://console.cloud.google.com/">Google Cloud</a> va <a href="https://openweathermap.org/">OpenWeatherMap</a> saytlaridan olingan!</p>
+
+                <% } %>
+
+
+                        <%if (locals.error) {%>
+
+                            <div class="errorBox">
+
+                                <h2 class="error">
+                                    <%=error%>
+                                </h2>
+                                <p class="errorNote">
+                                    <%=errorNote%>
+                                </p>
+
+                            </div>
+                    
+                            <%}%>
+                
+    
+            </div>
+    
+        </div>
+        
+
+    </div>
+    
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+    
